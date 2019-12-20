@@ -3668,9 +3668,9 @@ if (data.FREE_SERVICES != null ) {
                         }
 
                         if (data.PKS_DATE == "01-01-1970" ||data.PKS_DATE == null) {
-                                          $('#pks_date').val(moment().format('DD-MM-YYYY'));
+                                          $('#PKS_DATE').val(moment().format('DD-MM-YYYY'));
                                           }else{
-                                          $('#pks_date').val(data.PKS_DATE);
+                                          $('#PKS_DATE').val(data.PKS_DATE);
                                           }
                   $('#DESKSURVEY').modal('show');
                       }
@@ -4861,9 +4861,9 @@ if (data.FREE_SERVICES != null ) {
                     
                    window.localStorage.setItem('PROPERTY_TYPE', data.PROPERTY_TYPE);
                     // console.log();
-                    var data_2 =data.PROVINCE
-                  console.log(data_2.match(/^-{0,1}\d+$/));
-                  
+                    var data_2 = data.PROVINCE
+                  // console.log(data_2.match(/^-{0,1}\d+$/));
+                    
                     if (data_2.match(/^-{0,1}\d+$/)) {
                     $.ajax({
                            type: "GET",
@@ -4897,7 +4897,8 @@ if (data.FREE_SERVICES != null ) {
                         $('#CITY').val(data.CITY);
                         $('#SUBDISTRICT').val(data.SUBDISTRICT);
                 
-                    }        
+                    }   
+
                        $("#status_bagunan").show();
                         $("#harga_sewa_text_UPDATE").hide();
                         $("#harga_sewa_input_update").hide();
@@ -5468,7 +5469,7 @@ if (window.localStorage.getItem('progres') == "SIGNED PKS" ) {
             $("#Edit_PKS_SIGN").removeClass("ilang")
             $("#Edit_PKS_SIGN").addClass("muncul")
         
-             $('#pks_date').val(data.PKS_DATE);
+             $('#PKS_DATE').val(data.PKS_DATE);
              $('#UPDATE_PROGRESS_PKS_SIGN').val(data.UPDATE_PROGRESS);
         $('#Deal_Year').val(data.DEAL_YEAR);
         $('#No_PKS').val(data.NO_PKS);
@@ -5514,7 +5515,7 @@ if (window.localStorage.getItem('progres') == "SIGNED PKS" ) {
                 $("#Edit_ROLL").addClass("muncul")
                 $('#UPDATE_PROGRESS_ROLL').val(data.UPDATE_PROGRESS);
                 $('#wo_date').val(data.WO_DATE);
-                $('#pks_date').val(data.PKS_DATE);
+                $('#PKS_DATE').val(data.PKS_DATE);
                 $('#DESKSURVEY').modal('show');
                 
                 }

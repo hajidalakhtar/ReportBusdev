@@ -571,7 +571,7 @@ class StaffController extends Controller
         $newName = $ext[0] . ".pdf";
         $file->move('FP3', $newName);
         $report->FP3_PDF = $newName;
-
+        dd($report->FP3_PDF);
         $report->save();
 
         return redirect()->back();
@@ -910,7 +910,7 @@ class StaffController extends Controller
         $SALES_SIGNED = $report->SALES_SIGNED;
         $newSALES_SIGNED = date("m-d-Y", strtotime($SALES_SIGNED));
         $report->SALES_SIGNED = $newSALES_SIGNED;
-        return ['status' => 200, 'data' => $report];
+        return $report;
     }
     public function PostUpdateDeskSurvey(Request $req)
     {
@@ -1547,7 +1547,8 @@ class StaffController extends Controller
     }
     public function ApiReportData()
     {
-        $report = Report::where("PIC_MNC", Auth::user()->name)->orderBy('id', 'DESC')->get();
+        $report = Report::where("PIC_MNC", Auth::user()->name)->get();
+        // dd($report);    
         // 
         return DataTables::of($report)
             ->addIndexColumn()

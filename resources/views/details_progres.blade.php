@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -215,7 +215,7 @@
         $BIAYA_PERAPIHAN_DITAGIH_LANGSUNG_KE_PENGHUNI =
         explode(",",$data->BIAYA_PERAPIHAN_DITAGIH_LANGSUNG_KE_PENGHUNI);
 
-        if ($data->jumlah_lantai == null) {
+        if ($data->Jumlah_Lantai == null) {
         $jumlah_lantai[0] = "";
         $jumlah_lantai[1] = "";
         $jumlah_lantai[2] = "";

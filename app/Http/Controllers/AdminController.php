@@ -609,39 +609,40 @@ class AdminController extends Controller
 
 
             if ($user[$i]->wilayah == "JAKARTA 1") {
-                $wilayah_reject = \DB::select('SELECT * FROM `jakarta_1` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_reject = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 1' AND `TABLE 5`.`PROGRESS_STATUS` = 'REJECT'");
             }
             if ($user[$i]->wilayah == "JAKARTA 2") {
-                $wilayah_reject = \DB::select('SELECT * FROM `jakarta_2` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_reject = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 2' AND `TABLE 5`.`PROGRESS_STATUS` = 'REJECT'");
             }
             if ($user[$i]->wilayah == "JAKARTA 3") {
-                $wilayah_reject = \DB::select('SELECT * FROM `jakarta_3` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_reject = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 3' AND `TABLE 5`.`PROGRESS_STATUS` = 'REJECT'");
             }
             if ($user[$i]->wilayah == "SEMARANG") {
-                $wilayah_reject = \DB::select('SELECT * FROM `semarang` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_reject = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'SEMARANG' AND `TABLE 5`.`PROGRESS_STATUS` = 'REJECT'");
             }
             if ($user[$i]->wilayah == "SURABAYA") {
-                $wilayah_reject = \DB::select('SELECT * FROM `surabaya` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_reject = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'SURABAYA' AND `TABLE 5`.`PROGRESS_STATUS` = 'REJECT'");
             }
 
 
             if ($user[$i]->wilayah == "JAKARTA 1") {
-                $wilayah_all = \DB::select('SELECT * FROM `jakarta_1` WHERE NOT `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_all = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 1'");
             }
             if ($user[$i]->wilayah == "JAKARTA 2") {
-                $wilayah_all = \DB::select('SELECT * FROM `jakarta_2` WHERE NOT `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_all = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 2'");
             }
             if ($user[$i]->wilayah == "JAKARTA 3") {
-                $wilayah_all = \DB::select('SELECT * FROM `jakarta_3` WHERE NOT `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_all = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'JAKARTA 3'");
             }
             if ($user[$i]->wilayah == "SEMARANG") {
-                $wilayah_all = \DB::select('SELECT * FROM `semarang` WHERE NOT `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_all = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'SEMARANG'");
             }
             if ($user[$i]->wilayah == "SURABAYA") {
-                $wilayah_all = \DB::select('SELECT * FROM `surabaya` WHERE `PROGRESS_STATUS` = "REJECT"');
+                $wilayah_all = \DB::select("select * from `TABLE 5` join `wilayah_kodes` on `TABLE 5`.`CITY` = `wilayah_kodes`.`nama_wilayah` where `wilayah_kodes`.`name` = 'SURABAYA'");
             }
             // $user[$i]->jumlah_hari =  $this->getWorkingDays($user[$i]->tgl_masuk, '30-08-2019', $holidayDays);
             $user[$i]->jumlah_hari =  $this->getWorkingDays($user[$i]->tgl_masuk, Carbon::now()->format('d-m-Y'), $holidayDays);
+            
             $user[$i]->wilayah_reject = Count($wilayah_reject);
             $user[$i]->wilayah_all = Count($wilayah_all);
             $user[$i]->wilayah_total = Count($wilayah_reject) + Count($wilayah_all);
@@ -679,7 +680,7 @@ class AdminController extends Controller
                 }
             }
         }
-        // dd($produktivitas_jakarta_2);
+        // dd($user);
         return view('admin.Produktivitas', [
             'Produktivitas' => $Produktivitas,
             'user' => $user,
